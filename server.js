@@ -3,11 +3,17 @@ let bodyparser = require('body-parser');
 var cron = require('node-cron')
 let cors = require('cors');
 let http = require('http');
-let app=express();
-app.use(express.static(__dirname+''))
-const server=http.createServer(app);
+const mongoose = require('mongoose')
+let app = express();
+app.use(express.static(__dirname + ''))
+const server = http.createServer(app);
 app.use(cors());
 app.use(bodyparser.json());
+mongoose.connect("mongodb+srv://akash:akash1234@cluster0.4ayge.mongodb.net/project1?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true }).then(() => {
+    console.log("database connected");
+}).catch(err => {
+    console.log(err);
+})
 
 // cron.schedule('* * * * *', () => {
 //     var conn = require('./controller/controller');
@@ -23,150 +29,156 @@ app.use(bodyparser.json());
 //     var conn = require('./controller/controller');
 //     conn.up();
 //   });
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('Beaware of were you are stepping!!!');
 })
-//  Add Member
-app.post('/addMemberDash',(req,res,next)=>{
+app.post('/register', (req, res) => {
     var conn = require('./controller/controller');
-    conn.addMembers(req,res);
+    conn.register(req, res);
+
+})
+//  Add Member
+app.post('/addMemberDash', (req, res, next) => {
+    var conn = require('./controller/controller');
+    conn.addMembers(req, res);
 })
 //    Login
-app.post('/loginDash',(req,res,next)=>{
+app.post('/loginDash', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.login(req,res);
+    conn.login(req, res);
 })
 // fetch Direct
-app.get('/fetchDirectDash/:sponser',(req,res,next)=>{
+app.get('/fetchDirectDash/:sponser', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.fetchDirect(req,res);
+    conn.fetchDirect(req, res);
 })
 //     Fetch Name
-app.get('/fetchNameDash/:mobile',(req,res,next)=>{
+app.get('/fetchNameDash/:mobile', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.fetchName(req,res);
+    conn.fetchName(req, res);
 })
 //      Fetch Team
-app.get('/fetchTeamDash/:mobile',(req,res,next)=>{
+app.get('/fetchTeamDash/:mobile', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.fetchTeam(req,res);
+    conn.fetchTeam(req, res);
 })
 //  Fetch Member
-app.get('/fetchMemberDash',(req,res,next)=>{
+app.get('/fetchMemberDash', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.fetchMember(req,res);
+    conn.fetchMember(req, res);
 })
 //   Activate
-app.post('/activateDash',(req,res,next)=>{
+app.post('/activateDash', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.activate(req,res);
+    conn.activate(req, res);
 })
 //   Delete Member
-app.get('/deleteMemDash/:Id',(req,res,next)=>{
+app.get('/deleteMemDash/:Id', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.deleteMem(req,res);
+    conn.deleteMem(req, res);
 }),
-app.get('/fetchActiveDash',(req,res,next)=>{
-    var conn = require('./controller/controller');
-    conn.fetchactive(req,res);
-})
+    app.get('/fetchActiveDash', (req, res, next) => {
+        var conn = require('./controller/controller');
+        conn.fetchactive(req, res);
+    })
 // payout
-app.post('/payout',(req,res,next)=>{
+app.post('/payout', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.payout(req,res);
+    conn.payout(req, res);
 })
 // create id
-app.post('/createDash',(req,res,next)=>{
+app.post('/createDash', (req, res, next) => {
     var conn = require('./controller/controller');
-    conn.creatid(req,res);
+    conn.creatid(req, res);
 })
 // register
-app.get('/regiDash/:mobile',(req,res)=>{
+app.get('/regiDash/:mobile', (req, res) => {
     var conn = require('./controller/controller');
-    conn.regi(req,res);
+    conn.regi(req, res);
 })
 // fetch Balance
-app.get('/fetchBal/:mobile',(req,res)=>{
+app.get('/fetchBal/:mobile', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchBal(req,res)
+    conn.fetchBal(req, res)
 })
 // fetch session
-app.get('/fetchSes/:mobile',(req,res)=>{
+app.get('/fetchSes/:mobile', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchSession(req,res);
+    conn.fetchSession(req, res);
 })
 // call query
-app.post('/call',(req,res)=>{
+app.post('/call', (req, res) => {
     var conn = require('./controller/controller');
-    conn.call(req,res);
+    conn.call(req, res);
 })
 // wel Call List 
-app.get('/callList',(req,res)=>{
+app.get('/callList', (req, res) => {
     var conn = require('./controller/controller');
-    conn.welCall(req,res);
+    conn.welCall(req, res);
 })
 // account opening List 
-app.get('/accList',(req,res)=>{
+app.get('/accList', (req, res) => {
     var conn = require('./controller/controller');
-    conn.accList(req,res);
+    conn.accList(req, res);
 })
 // search by mobile
-app.get('/mobile/:mobile',(req,res)=>{
+app.get('/mobile/:mobile', (req, res) => {
     var conn = require('./controller/controller');
-    conn.sMobile(req,res);
+    conn.sMobile(req, res);
 })
 // raise query
-app.post('/query',(req,res)=>{
+app.post('/query', (req, res) => {
     var conn = require('./controller/controller');
 })
 // regenrate password
-app.get('/genPass/:id',(req,res)=>{
+app.get('/genPass/:id', (req, res) => {
     var conn = require('./controller/controller');
-    conn.genPass(req,res);
+    conn.genPass(req, res);
 })
 //  update form
-app.post('/updateForm',(req,res)=>{
+app.post('/updateForm', (req, res) => {
     var conn = require('./controller/dashback/upload');
-    conn.uploadForm(req,res);
+    conn.uploadForm(req, res);
 })
 //    Skip
-app.post('/skip',(req,res)=>{
+app.post('/skip', (req, res) => {
     var conn = require('./controller/controller');
-    conn.skip(req,res);
+    conn.skip(req, res);
 })
 //     intereset
-app.get('/int/:mob',(req,res)=>{
+app.get('/int/:mob', (req, res) => {
     var conn = require('./controller/controller');
-    conn.int(req,res);
+    conn.int(req, res);
 })
 //fetch Pass
-app.get('/fetchPass',(req,res)=>{
+app.get('/fetchPass', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchPass(req,res);
+    conn.fetchPass(req, res);
 })
 //Update Pass
-app.post('/updatePass',(req,res)=>{
+app.post('/updatePass', (req, res) => {
     var conn = require('./controller/controller');
 })
 //fetch Level
-app.get('/fetchLevel/:id',(req,res)=>{
+app.get('/fetchLevel/:id', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchLevel(req,res)
+    conn.fetchLevel(req, res)
 })
 //fetchStatement
-app.get('/fetchStatement/:id',(req,res)=>{
+app.get('/fetchStatement/:id', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchStatement(req,res);
+    conn.fetchStatement(req, res);
 })
-app.get('/fetchAll',(req,res)=>{
+app.get('/fetchAll', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchAll(req,res);
+    conn.fetchAll(req, res);
 })
 //fetch old
-app.get('/fetchOld',(req,res)=>{
+app.get('/fetchOld', (req, res) => {
     var conn = require('./controller/controller');
-    conn.fetchOld(req,res)
+    conn.fetchOld(req, res)
 })
-server.listen(1234,()=>{
+const port = process.env.PORT || 2000;
+server.listen(port, () => {
     console.log("Running at port 1234")
 })

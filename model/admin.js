@@ -1,16 +1,18 @@
 let mongoose = require('mongoose');
 
-module.exports = mongoose.model('admin',{
-    username:{
-        type:String
+
+module.exports = mongoose.model('admin', {
+    username: {
+        type: String
     },
-    password:{
-        type:String
+    password: {
+        type: String
     },
-    id:{
-        type:Number
+    id: {
+        type: Number
     },
-    fid:{
-        type:String
+    fid: {
+        type: String
     }
 })
+

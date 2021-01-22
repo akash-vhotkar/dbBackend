@@ -1,135 +1,149 @@
 let mongoose = require('mongoose');
 
-module.exports = mongoose.model('profile',{
-    name:{
-        type:String
+module.exports = mongoose.model('profile', {
+    name: {
+        type: String
     },
-    mobile:{
-        type:Number
+    mobile: {
+        type: Number
+    },// joining date
+    // activation date
+    // package 
+    // 
+    // 5 10 20 40
+    // 
+    joining_date: {
+        type: Date,
     },
-    id:{
-        type:String
+    activation_date: {
+        type: Date
     },
-    email:{
-        type:String
+    packages: {
+        type: Number
     },
-    sponserName:{
-        type:String
+    id: {
+        type: String
     },
-    sponserId:{
-        type:String
+    email: {
+        type: String
     },
-    aadharno:{
-        type:Number
+    sponserName: {
+        type: String
     },
-    panNo:{
-        type:String
+    sponserId: {
+        type: String
     },
-    direct:{
-        type:Number,
-        'default':0
+    aadharno: {
+        type: Number
     },
-    lvlNo:{
-        type:Number,
-        'default':0
+    panNo: {
+        type: String
     },
-    motherName:{
-        type:String
+    direct: {
+        type: Number,
+        'default': 0
     },
-    fatherName:{
-        type:String
+    lvlNo: {
+        type: Number,
+        'default': 0
     },
-    Gender:{
-        type:String
+    motherName: {
+        type: String
     },
-    occupation:{
-        type:String
+    fatherName: {
+        type: String
     },
-    maritalStatus:{
-        type:String
+    Gender: {
+        type: String
     },
-    address:{
-        type:String
+    occupation: {
+        type: String
     },
-    city:{
-        type:String
+    maritalStatus: {
+        type: String
     },
-    state:{
-        type:String
+    address: {
+        type: String
     },
-    pincode:{
-        type:String
+    city: {
+        type: String
     },
-    status:{
-        type:String,
-        'default':'inactive'
+    state: {
+        type: String
     },
-    joiningDate:{
-        type:String
+    pincode: {
+        type: String
     },
-    activationDate:{
-        type:String
+    status: {
+        type: String,
+        'default': 'inactive'
     },
-    ancestors:[],
-    welCall:{
-        type:Boolean,
-        'default':'false'
+    joiningDate: {
+        type: String
     },
-    aadhar:String,
-    aadharStat:{
-        type:Boolean,
-        'default':'false'
+    activationDate: {
+        type: String
     },
-    aadharBack:String,
-    aadharBackStat:{
-        type:Boolean,
-        'default':'false'
+    ancestors: [],
+    welCall: {
+        type: Boolean,
+        'default': 'false'
     },
-    pan:String,
-    panStat:{
-        type:Boolean,
-        'default':'false'
+    aadhar: String,
+    aadharStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    sign:String,
-    signStat:{
-        type:Boolean,
-        'default':'false'
+    aadharBack: String,
+    aadharBackStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    photo:String,
-    photoStat:{
-        type:Boolean,
-        'default':'false'
+    pan: String,
+    panStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    statement:{
-        type:Boolean,
-        'default':'false'
+    sign: String,
+    signStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    addresProof:String,
-    addresProofStat:{
-        type:Boolean,
-        'default':'false'
+    photo: String,
+    photoStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    formStat:{
-        type:Boolean,
-        'default':'false'
+    statement: {
+        type: Boolean,
+        'default': 'false'
     },
-    annualIncome:{
-        type:String
+    addresProof: String,
+    addresProofStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    OthOc:{
-        type:String
+    formStat: {
+        type: Boolean,
+        'default': 'false'
     },
-    incomePType:{
-        type:String
+    annualIncome: {
+        type: String
     },
-    addressPType:{
-        type:String
+    OthOc: {
+        type: String
     },
-    dob:{
-        type:Date
+    incomePType: {
+        type: String
     },
-    int:{
-        type:Boolean,
-        'default':'true'
+    addressPType: {
+        type: String
+    },
+    dob: {
+        type: Date
+    },
+    int: {
+        type: Boolean,
+        'default': 'true'
     }
 })
